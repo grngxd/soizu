@@ -1,0 +1,28 @@
+pkg main;
+import soizu/io;
+
+struct Main {
+    args []string
+}
+
+fn (m Main) Main() (int8) {
+    // := is implicit variable declaration
+    // full capital named & inferred type variable makes it constant (e.g NAME, HELLO, VARIABLE; but not NaME, hELLO, Variable)
+    NAME := "Hello";
+    // explicitly typed constant variable assignment
+    const world []rune = "World";
+    // Error on line 15, unused variable.
+    var unused float = 3.141592653;
+
+    // Backticks for curly braced expressions (similar to python's fstrings)
+    io.PrintLn(`{NAME}, {world}!`);
+    // %? expressions (only works with variables/values)
+    io.Printf("%s, %s", NAME, world);
+    
+    // starts from the 2nd item in the array, all the way to the end
+    for (i in range 1..args.len() - 1) {
+        // Print out the item's index and its value.
+        io.PrintLn(`Argument #{i + 1}: {args[i]}`);
+    }
+    return 0;
+}
